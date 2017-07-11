@@ -1,0 +1,7 @@
+.gradle/
+.idea/
+build/
+classes/
+run/
+run-*/
+mods-bak/

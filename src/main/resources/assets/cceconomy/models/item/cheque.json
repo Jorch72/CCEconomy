@@ -1,0 +1,14 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "cceconomy:item/cheque_blank"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "filled": 1
+      },
+      "model": "cceconomy:item/cheque_filled"
+    }
+  ]
+}

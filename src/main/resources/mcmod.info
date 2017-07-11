@@ -1,0 +1,11 @@
+[
+	{
+		"modid": "cceconomy",
+		"name": "CCEconomy",
+		"description": "An interface between ComputerCraft and Sponge Economy.",
+		"version": "${modVersion}",
+		"mcversion": "${mcVersion}",
+		"authorList": ["Lemmmy"],
+		"dependencies": ["ComputerCraft"]
+	}
+]

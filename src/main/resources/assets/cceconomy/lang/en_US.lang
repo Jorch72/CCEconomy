@@ -1,0 +1,7 @@
+# Creative tab
+itemGroup.cceconomy=CCEconomy
+
+# Cheques
+item.cceconomy.cheque.blank.name=Blank Check
+item.cceconomy.cheque.filled.name=Check for %s
+item.cceconomy.cheque.filled.signedBy=Signed by %s

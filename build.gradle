@@ -1,0 +1,73 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven { url = "http://files.minecraftforge.net/maven" }
+        maven { url = "http://repo.spongepowered.org/maven" }
+    }
+
+    dependencies {
+        classpath "net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT"
+    }
+}
+
+apply plugin: "net.minecraftforge.gradle.forge"
+
+version = "${project.mcVersion}-${project.forgeVersion}"
+group = "net.clgd.cceconomy"
+archivesBaseName = "cceconomy"
+
+sourceCompatibility = targetCompatibility = "1.8"
+
+compileJava {
+    sourceCompatibility = targetCompatibility = "1.8"
+}
+
+minecraft {
+    version = "${project.mcVersion}-${project.forgeVersion}"
+    runDir = "run-${project.mcVersion}"
+    mappings = project.mcpMappings
+
+    replace '${modVersion}', project.modVersion
+    replace '${mcVersion}', project.mcVersion
+    replace '${ccVersion}', project.ccVersion
+}
+
+repositories {
+    maven { url = "https://cc.crzd.me/maven/" }
+    maven { url = "https://dl.bintray.com/squiddev/maven" }
+    maven { url = "https://repo.spongepowered.org/maven/" }
+}
+
+dependencies {
+    compileOnly "org.projectlombok:lombok:1.16.16"
+
+    compile "dan200.computercraft:ComputerCraft:${project.ccVersion}-${project.ccBuild}"
+    compile "org.squiddev:CCTweaks:${project.mcVersion}-1.5.0-pr0:dev"
+
+    /*compile ("org.spongepowered:spongeforge:${project.mcVersion}-${project.spongeVersion}:dev") {
+        exclude module: "testplugins"
+    }*/
+
+    compile "org.spongepowered:spongeapi:${project.spongeAPIVersion}"
+}
+
+processResources {
+    inputs.property "modVersion", project.modVersion
+    inputs.property "mcVersion", project.mcVersion
+
+    from(sourceSets.main.resources.srcDirs) {
+        include "mcmod.info"
+
+        expand "modVersion":project.version, "mcVersion":project.minecraft.version
+    }
+
+    from(sourceSets.main.resources.srcDirs) {
+        exclude "mcmod.info"
+    }
+}
+
+gradle.projectsEvaluated {
+    tasks.withType(JavaCompile) {
+        options.compilerArgs << "-Xlint" << "-Xlint:-rawtypes" << "-Xlint:-processing"
+    }
+}

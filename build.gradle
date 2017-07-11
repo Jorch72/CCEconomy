@@ -44,10 +44,6 @@ dependencies {
     compile "dan200.computercraft:ComputerCraft:${project.ccVersion}-${project.ccBuild}"
     compile "org.squiddev:CCTweaks:${project.mcVersion}-1.5.0-pr0:dev"
 
-    /*compile ("org.spongepowered:spongeforge:${project.mcVersion}-${project.spongeVersion}:dev") {
-        exclude module: "testplugins"
-    }*/
-
     compile "org.spongepowered:spongeapi:${project.spongeAPIVersion}"
 }
 
